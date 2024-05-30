@@ -1,6 +1,5 @@
 buildscript {
     repositories {
-        jcenter()
         mavenCentral()
     }
 }
@@ -8,7 +7,7 @@ buildscript {
 plugins {
     id 'com.gradle.plugin-publish' version '0.10.1'
     id 'groovy'
-    id 'maven'
+    id 'maven-publish'
     id 'signing'
     id 'jacoco'
     id 'java-gradle-plugin'
@@ -74,8 +73,6 @@ jacocoTestReport {
 
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_7
-
-uploadArchives.dependsOn check
 
 task copyTestResources(type: Copy) {
     from "${projectDir}/src/test/resources"
