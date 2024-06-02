@@ -80,7 +80,7 @@ java {
     }
 }
 
-task copyTestResources(type: Copy) {
+tasks.register('copyTestResources', Copy) {
     from "${projectDir}/src/test/resources"
     into "${buildDir}/classes/test"
     group = 'verification'

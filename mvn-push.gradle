@@ -1,12 +1,14 @@
 apply plugin: 'maven-publish'
 apply plugin: 'signing'
 
-task javadocsJar(type: Jar, dependsOn: javadoc) {
+tasks.register('javadocsJar', Jar) {
+    dependsOn javadoc
     archiveClassifier.set('javadoc')
     from javadoc.destinationDir
 }
 
-task sourcesJar(type: Jar, dependsOn: classes) {
+tasks.register('sourcesJar', Jar) {
+    dependsOn classes
     archiveClassifier.set('sources')
     from sourceSets.main.allSource
 }
@@ -71,9 +73,9 @@ publishing {
     }
 }
 
-signing {
-    sign publishing.publications.mavenJava
-}
+//signing {
+//    sign publishing.publications.mavenJava
+//}
 
 artifacts {
     archives sourcesJar
